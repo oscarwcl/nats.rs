@@ -18,8 +18,8 @@ mod client {
         ConnectErrorKind, ConnectOptions, Event, Request, RequestErrorKind, ServerAddr, Subject,
     };
     use bytes::Bytes;
-    use futures::future::join_all;
-    use futures::stream::StreamExt;
+    use futures_util::future::join_all;
+    use futures_util::stream::StreamExt;
     use std::path::PathBuf;
     use std::str::FromStr;
     use std::time::Duration;

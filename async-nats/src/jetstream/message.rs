@@ -16,8 +16,8 @@ use super::context::Context;
 use crate::subject::Subject;
 use crate::Error;
 use bytes::Bytes;
-use futures::future::TryFutureExt;
-use futures::StreamExt;
+use futures_util::future::TryFutureExt;
+use futures_util::StreamExt;
 use std::{mem, time::Duration};
 use time::OffsetDateTime;
 
@@ -66,7 +66,7 @@ impl Message {
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
     /// use async_nats::jetstream::consumer::PullConsumer;
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///
@@ -108,7 +108,7 @@ impl Message {
     /// # async fn main() -> Result<(), async_nats::Error> {
     /// use async_nats::jetstream::consumer::PullConsumer;
     /// use async_nats::jetstream::AckKind;
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///
@@ -153,7 +153,7 @@ impl Message {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///
@@ -351,7 +351,7 @@ impl Acker {
     /// # async fn main() -> Result<(), async_nats::Error> {
     /// use async_nats::jetstream::consumer::PullConsumer;
     /// use async_nats::jetstream::Message;
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///
@@ -399,7 +399,7 @@ impl Acker {
     /// use async_nats::jetstream::consumer::PullConsumer;
     /// use async_nats::jetstream::AckKind;
     /// use async_nats::jetstream::Message;
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///
@@ -450,7 +450,7 @@ impl Acker {
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
     /// use async_nats::jetstream::Message;
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///

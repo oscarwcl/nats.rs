@@ -18,8 +18,8 @@ use crate::ServerInfo;
 use super::{header::HeaderMap, status::StatusCode, Command, Message, Subscriber};
 use crate::error::Error;
 use bytes::Bytes;
-use futures::future::TryFutureExt;
-use futures::StreamExt;
+use futures_util::future::TryFutureExt;
+use futures_util::StreamExt;
 use once_cell::sync::Lazy;
 use portable_atomic::AtomicU64;
 use regex::Regex;
@@ -482,7 +482,7 @@ impl Client {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io").await?;
     /// let mut subscription = client.subscribe("events.>").await?;
     /// while let Some(message) = subscription.next().await {
@@ -515,7 +515,7 @@ impl Client {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io").await?;
     /// let mut subscription = client.queue_subscribe("events.>", "queue".into()).await?;
     /// while let Some(message) = subscription.next().await {

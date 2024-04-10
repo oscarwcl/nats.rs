@@ -23,7 +23,7 @@ use std::{
 
 use crate::{HeaderValue, StatusCode};
 use bytes::Bytes;
-use futures::StreamExt;
+use futures_util::StreamExt;
 use once_cell::sync::Lazy;
 use regex::Regex;
 use time::{format_description::well_known::Rfc3339, OffsetDateTime};
@@ -456,7 +456,7 @@ impl Store {
         }
     }
 
-    /// Creates a [futures::Stream] over [Entries][Entry]  a given key in the bucket, which yields
+    /// Creates a [futures_util::Stream] over [Entries][Entry]  a given key in the bucket, which yields
     /// values whenever there are changes for that key.
     ///
     /// # Examples
@@ -464,7 +464,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -486,7 +486,7 @@ impl Store {
             .await
     }
 
-    /// Creates a [futures::Stream] over [Entries][Entry] a given key in the bucket, starting from
+    /// Creates a [futures_util::Stream] over [Entries][Entry] a given key in the bucket, starting from
     /// provided revision. This is useful to resume watching over big KV buckets without a need to
     /// replay all the history.
     ///
@@ -495,7 +495,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -526,7 +526,7 @@ impl Store {
         .await
     }
 
-    /// Creates a [futures::Stream] over [Entries][Entry]  a given key in the bucket, which yields
+    /// Creates a [futures_util::Stream] over [Entries][Entry]  a given key in the bucket, which yields
     /// values whenever there are changes for that key with as well as last value.
     ///
     /// # Examples
@@ -534,7 +534,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -596,7 +596,7 @@ impl Store {
         })
     }
 
-    /// Creates a [futures::Stream] over [Entries][Entry] for all keys, which yields
+    /// Creates a [futures_util::Stream] over [Entries][Entry] for all keys, which yields
     /// values whenever there are changes in the bucket.
     ///
     /// # Examples
@@ -604,7 +604,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -625,7 +625,7 @@ impl Store {
         self.watch(ALL_KEYS).await
     }
 
-    /// Creates a [futures::Stream] over [Entries][Entry] for all keys starting
+    /// Creates a [futures_util::Stream] over [Entries][Entry] for all keys starting
     /// from a provider revision. This can be useful when resuming watching over a big bucket
     /// without the need to replay all the history.
     ///
@@ -634,7 +634,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -703,7 +703,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -757,7 +757,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -784,7 +784,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -846,7 +846,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -874,7 +874,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -926,7 +926,7 @@ impl Store {
         Ok(())
     }
 
-    /// Returns a [futures::Stream] that allows iterating over all [Operations][Operation] that
+    /// Returns a [futures_util::Stream] that allows iterating over all [Operations][Operation] that
     /// happen for given key.
     ///
     /// # Examples
@@ -934,7 +934,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -976,7 +976,7 @@ impl Store {
         })
     }
 
-    /// Returns a [futures::Stream] that allows iterating over all keys in the bucket.
+    /// Returns a [futures_util::Stream] that allows iterating over all keys in the bucket.
     ///
     /// # Examples
     ///
@@ -985,7 +985,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::{StreamExt, TryStreamExt};
+    /// use futures_util::{StreamExt, TryStreamExt};
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -1008,7 +1008,7 @@ impl Store {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::TryStreamExt;
+    /// use futures_util::TryStreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let kv = jetstream
@@ -1058,7 +1058,7 @@ pub struct Watch {
     bucket: String,
 }
 
-impl futures::Stream for Watch {
+impl futures_util::Stream for Watch {
     type Item = Result<Entry, WatcherError>;
 
     fn poll_next(
@@ -1113,7 +1113,7 @@ pub struct History {
     bucket: String,
 }
 
-impl futures::Stream for History {
+impl futures_util::Stream for History {
     type Item = Result<Entry, WatcherError>;
 
     fn poll_next(
@@ -1170,7 +1170,7 @@ pub struct Keys {
     inner: History,
 }
 
-impl futures::Stream for Keys {
+impl futures_util::Stream for Keys {
     type Item = Result<String, WatcherError>;
 
     fn poll_next(

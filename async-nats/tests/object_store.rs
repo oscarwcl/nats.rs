@@ -20,7 +20,7 @@ mod object_store {
         stream::DirectGetErrorKind,
     };
     use base64::Engine;
-    use futures::StreamExt;
+    use futures_util::StreamExt;
     use rand::RngCore;
     use ring::digest::SHA256;
     use tokio::io::AsyncReadExt;

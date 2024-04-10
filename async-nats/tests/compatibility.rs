@@ -13,7 +13,7 @@
 
 #[cfg(feature = "compatibility_tests")]
 mod compatibility {
-    use futures::{pin_mut, stream::Peekable, StreamExt};
+    use futures_util::{pin_mut, stream::Peekable, StreamExt};
 
     use core::panic;
     use std::{collections::HashMap, pin::Pin, str::from_utf8};

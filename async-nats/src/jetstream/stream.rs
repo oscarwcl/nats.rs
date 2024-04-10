@@ -31,7 +31,7 @@ use crate::{
 use base64::engine::general_purpose::STANDARD;
 use base64::engine::Engine;
 use bytes::Bytes;
-use futures::{future::BoxFuture, TryFutureExt};
+use futures_util::{future::BoxFuture, TryFutureExt};
 use serde::{Deserialize, Deserializer, Serialize};
 use serde_json::json;
 use time::{serde::rfc3339, OffsetDateTime};
@@ -492,8 +492,8 @@ impl Stream {
     /// ```no_run
     /// #[tokio::main]
     /// # async fn mains() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
-    /// use futures::TryStreamExt;
+    /// use futures_util::StreamExt;
+    /// use futures_util::TryStreamExt;
     ///
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let context = async_nats::jetstream::new(client);
@@ -535,8 +535,8 @@ impl Stream {
     /// ```no_run
     /// #[tokio::main]
     /// # async fn mains() -> Result<(), async_nats::Error> {
-    /// use futures::StreamExt;
-    /// use futures::TryStreamExt;
+    /// use futures_util::StreamExt;
+    /// use futures_util::TryStreamExt;
     ///
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let context = async_nats::jetstream::new(client);
@@ -752,7 +752,7 @@ impl Stream {
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
     /// use async_nats::jetstream::consumer;
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///
@@ -784,7 +784,7 @@ impl Stream {
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
     /// use async_nats::jetstream::consumer;
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///
@@ -829,7 +829,7 @@ impl Stream {
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
     /// use async_nats::jetstream::consumer;
-    /// use futures::StreamExt;
+    /// use futures_util::StreamExt;
     /// let client = async_nats::connect("localhost:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     ///
@@ -857,7 +857,7 @@ impl Stream {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::TryStreamExt;
+    /// use futures_util::TryStreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let stream = jetstream.get_stream("stream").await?;
@@ -886,7 +886,7 @@ impl Stream {
     /// ```no_run
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), async_nats::Error> {
-    /// use futures::TryStreamExt;
+    /// use futures_util::TryStreamExt;
     /// let client = async_nats::connect("demo.nats.io:4222").await?;
     /// let jetstream = async_nats::jetstream::new(client);
     /// let stream = jetstream.get_stream("stream").await?;
@@ -1627,7 +1627,7 @@ pub struct ConsumerNames {
     done: bool,
 }
 
-impl futures::Stream for ConsumerNames {
+impl futures_util::Stream for ConsumerNames {
     type Item = Result<String, ConsumerNamesError>;
 
     fn poll_next(
@@ -1705,7 +1705,7 @@ pub struct Consumers {
     done: bool,
 }
 
-impl futures::Stream for Consumers {
+impl futures_util::Stream for Consumers {
     type Item = Result<super::consumer::Info, ConsumersError>;
 
     fn poll_next(
